@@ -22,8 +22,8 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   { label: "Services", href: "#services" },
-  { label: "Work", href: "#why" },
-  { label: "About", href: "#process" },
+  { label: "Process", href: "#process" },
+  { label: "About", href: "#why" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -56,7 +56,7 @@ const SERVICES = [
 
 const STATS = [
   { k: "03+", v: "Years in Practice" },
-  { k: "40", v: "Brands Shaped" },
+  { k: "100%", v: "Client Focused" },
   { k: "AI", v: "Tech-First Method" },
   { k: "01", v: "Strategy Before Design" },
 ];
@@ -89,7 +89,9 @@ function useReveal() {
 
 function Landing() {
   useReveal();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [navOpen, setNavOpen] = useState(false);
 
   return (
@@ -137,9 +139,8 @@ function Landing() {
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
           {/* Editorial top meta bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-16 lg:mb-24 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60 reveal">
-            <span>Vol. 01 — Issue 2025</span>
             <span className="hidden sm:inline">An Editorial Studio for Modern Brands</span>
-            <span>Est. MMXXII</span>
+            <span>Est. MMXXV</span>
           </div>
 
           <div className="grid lg:grid-cols-12 gap-8 items-end">
@@ -224,9 +225,6 @@ function Landing() {
                   {s.title}
                 </h3>
                 <p className="font-body text-foreground/70 leading-relaxed max-w-sm">{s.desc}</p>
-                <div className="mt-10 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60 group-hover:text-primary transition-colors">
-                  Read more <span>→</span>
-                </div>
               </div>
             ))}
           </div>
@@ -326,20 +324,38 @@ function Landing() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (email) {
-                    alert(`Thank you. We'll be in touch at ${email}`);
+                  if (name && email && message) {
+                    alert(`Thank you, ${name}. We'll be in touch at ${email}`);
+                    setName("");
                     setEmail("");
+                    setMessage("");
                   }
                 }}
-                className="flex flex-col gap-3"
+                className="flex flex-col gap-4"
               >
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name"
+                  className="rounded-none bg-transparent border-b border-background/40 px-1 py-3 font-body text-background placeholder:text-background/40 focus:border-primary focus:outline-none transition-colors"
+                />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="bg-transparent border-b border-background/40 px-1 py-3 font-body text-background placeholder:text-background/40 focus:border-primary focus:outline-none transition-colors"
+                  className="rounded-none bg-transparent border-b border-background/40 px-1 py-3 font-body text-background placeholder:text-background/40 focus:border-primary focus:outline-none transition-colors"
+                />
+                <textarea
+                  required
+                  rows={3}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Tell us about your project"
+                  className="rounded-none bg-transparent border-b border-background/40 px-1 py-3 font-body text-background placeholder:text-background/40 focus:border-primary focus:outline-none transition-colors resize-none"
                 />
                 <button
                   type="submit"
@@ -348,6 +364,9 @@ function Landing() {
                   Send Inquiry <span>→</span>
                 </button>
               </form>
+              <p className="mt-6 font-body text-sm text-background/70">
+                Or reach us directly — <a href="mailto:hello@beinsignia.com" className="text-primary hover:underline">hello@beinsignia.com</a>
+              </p>
             </div>
           </div>
         </div>
@@ -376,16 +395,10 @@ function Landing() {
               </ul>
             </div>
             <div className="lg:col-span-3">
-              <p className="font-mono uppercase tracking-[0.25em] text-[11px] text-foreground/50 mb-4">— Channels</p>
-              <ul className="space-y-2 font-body text-sm">
-                {["Instagram", "Twitter / X", "LinkedIn", "Behance"].map((s) => (
-                  <li key={s}>
-                    <a href="#" className="hover:text-primary transition-colors inline-flex items-center gap-2">
-                      {s} <span className="text-foreground/40">↗</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <p className="font-mono uppercase tracking-[0.25em] text-[11px] text-foreground/50 mb-4">— Contact</p>
+              <a href="mailto:hello@beinsignia.com" className="font-body text-sm hover:text-primary transition-colors">
+                hello@beinsignia.com
+              </a>
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between gap-4 pt-8 border-t border-foreground/20 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/60">
