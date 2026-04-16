@@ -30,15 +30,21 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Be Insignia" },
-      { name: "description", content: "Be Insignia is a branding and digital strategy studio crafting identities, strategies, and digital experiences for brands that intend to lead — not follow." },
+      { name: "description", content: "Be Insignia is a branding and digital strategy studio 
+crafting identities, strategies, and digital experiences 
+for brands that intend to lead — not follow." },
       { name: "author", content: "Be Insignia" },
       { property: "og:title", content: "Be Insignia" },
-      { property: "og:description", content: "Be Insignia is a branding and digital strategy studio crafting identities, strategies, and digital experiences for brands that intend to lead — not follow." },
+      { property: "og:description", content: "Be Insignia is a branding and digital strategy studio 
+crafting identities, strategies, and digital experiences 
+for brands that intend to lead — not follow." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@beinsignia" },
       { name: "twitter:title", content: "Be Insignia" },
-      { name: "twitter:description", content: "Be Insignia is a branding and digital strategy studio crafting identities, strategies, and digital experiences for brands that intend to lead — not follow." },
+      { name: "twitter:description", content: "Be Insignia is a branding and digital strategy studio 
+crafting identities, strategies, and digital experiences 
+for brands that intend to lead — not follow." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/THOxWhtyjlaOyV1FL06DdJJiKFH2/social-images/social-1776383770653-Gemini_Generated_Image_983j4k983j4k983j.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/THOxWhtyjlaOyV1FL06DdJJiKFH2/social-images/social-1776383770653-Gemini_Generated_Image_983j4k983j4k983j.webp" },
     ],
