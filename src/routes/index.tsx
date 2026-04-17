@@ -183,11 +183,11 @@ function Landing() {
 
       {/* MARQUEE */}
       <section className="border-b border-foreground/15 py-5 overflow-hidden bg-foreground text-background">
-        <div className="flex marquee-track whitespace-nowrap">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center shrink-0">
+        <div className="flex marquee-track">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center shrink-0" aria-hidden={i > 0}>
               {MARQUEE.map((m) => (
-                <span key={`${i}-${m}`} className="font-display italic font-normal text-3xl md:text-5xl px-10 flex items-center gap-10">
+                <span key={`${i}-${m}`} className="font-display italic font-normal text-3xl md:text-5xl px-10 flex items-center gap-10 whitespace-nowrap">
                   {m}
                   <span className="text-primary">✻</span>
                 </span>
