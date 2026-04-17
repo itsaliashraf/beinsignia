@@ -99,7 +99,7 @@ function Landing() {
       {/* NAVBAR */}
       <header className="fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-sm border-b border-foreground/15">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display font-black text-xl tracking-tight">
+          <a href="#top" className="font-display font-black text-3xl md:text-4xl tracking-tight">
             Be Insignia<span className="text-primary">.</span>
           </a>
           <nav className="hidden md:flex items-center gap-10 text-xs font-sub uppercase tracking-[0.2em]">
