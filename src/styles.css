@@ -119,7 +119,8 @@
     background-size: calc(100% / 12) 100%;
   }
   .marquee-track {
-    animation: marquee 15s linear infinite;
+    animation: marquee 20s linear infinite;
+    width: max-content;
   }
   @keyframes marquee {
     from { transform: translateX(0); }
