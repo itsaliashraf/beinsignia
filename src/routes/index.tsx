@@ -134,11 +134,11 @@ function Landing() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 border-b border-foreground/15">
+      <section id="top" className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 border-b border-foreground/15">
         <div className="absolute inset-0 rule-grid opacity-60 pointer-events-none" />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
           {/* Editorial top meta bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-16 lg:mb-24 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60 reveal">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8 lg:mb-12 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60 reveal">
             <span className="hidden sm:inline">An Editorial Studio for Modern Brands</span>
             <span>Est. MMXXV</span>
           </div>
@@ -148,7 +148,7 @@ function Landing() {
               <p className="font-mono uppercase tracking-[0.25em] text-[11px] text-primary mb-8 reveal">
                 — Branding · Strategy · Digital
               </p>
-              <h1 className="font-display font-black text-[14vw] lg:text-[10rem] leading-[0.88] tracking-[-0.04em] reveal">
+              <h1 className="font-display font-black text-[11vw] lg:text-[7.5rem] leading-[0.9] tracking-[-0.04em] reveal">
                 Brands <span className="display-italic font-normal text-primary">of</span><br />
                 Consequence,<br />
                 <span className="display-italic font-normal">composed</span> with<br />
