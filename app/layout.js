@@ -1,34 +1,72 @@
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
+import MotionProvider from "@/components/ui/MotionProvider";
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
 
 export const metadata = {
-  title: "Be Insignia",
-  description:
-    "Be Insignia builds custom software, web apps, mobile apps, SaaS platforms and AI solutions for startups, SMEs and enterprises.",
-  icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A0%3C/text%3E%3C/svg%3E",
+  metadataBase: new URL(site.url),
+  title: {
+    default: "Click & Code — Digital Marketing & Software Development Company in Lahore",
+    template: "%s · Click & Code",
   },
+  description: site.description,
+  applicationName: site.name,
+  keywords: [
+    "digital marketing agency Lahore",
+    "software development company Lahore",
+    "SEO services",
+    "AEO GEO",
+    "Google Ads management",
+    "Meta Ads",
+    "custom website development",
+    "WordPress development",
+    "custom app development",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: "Click & Code — Digital solutions that turn your ideas into growth",
+    description: site.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Click & Code",
+    description: site.description,
+  },
+};
+
+export const viewport = {
+  themeColor: "#0e0d0c",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
-        <a className="skip-link" href="#main">
-          Skip to main content
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+      <body className="grain min-h-dvh overflow-x-clip">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-on-accent"
+        >
+          Skip to content
         </a>
-        <Header />
-        {children}
-        <Footer />
+        <MotionProvider>
+          <Nav />
+          <main id="main">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

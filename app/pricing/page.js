@@ -1,157 +1,93 @@
-import Link from "next/link";
-import PricingCalculator from "@/components/PricingCalculator";
+import PageHero from "@/components/ui/PageHero";
+import PricingPlans from "@/components/pricing/PricingPlans";
+import Faq from "@/components/pricing/Faq";
+import FinalCta from "@/components/home/FinalCta";
+import { Reveal } from "@/components/ui/Reveal";
+import { Accent, Eyebrow } from "@/components/ui/SectionHeader";
+import { plans, pricingFaq, site } from "@/lib/site";
 
 export const metadata = {
-  title: "Pricing — Estimate Your Software Project Budget | Be Insignia",
+  title: "GBP Pricing — Google Business Profile Plans",
   description:
-    "Get a transparent, instant estimate for custom software, web, mobile app, SaaS and AI development. Adjust scope, pages and add-ons to see your budget. Book a free consultation.",
-  keywords:
-    "software development pricing, custom software cost, web development pricing, mobile app development cost, SaaS development pricing",
+    "Google Business Profile management plans from Click & Code: Starter $400, Momentum $450 and Pioneer $500 per month. Local citations, NAP consistency, technical SEO and more.",
   alternates: { canonical: "/pricing" },
-  openGraph: {
-    title: "Pricing & Estimates | Be Insignia",
-    description: "An instant, transparent estimate for your software project — adjust scope and see your budget.",
-    type: "website",
-  },
 };
 
-const jsonLd = {
+const faqLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Be Insignia Pricing",
-  url: "/pricing",
-  description: "Estimate the budget for a custom software, web, mobile, SaaS or AI development project.",
+  "@type": "FAQPage",
+  mainEntity: pricingFaq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
-const CHECK = (
-  <svg viewBox="0 0 24 24" fill="none">
-    <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const offersLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Google Business Profile management",
+  provider: { "@type": "ProfessionalService", name: site.name },
+  offers: plans.map((p) => ({
+    "@type": "Offer",
+    name: p.name,
+    price: p.price.toFixed(2),
+    priceCurrency: "USD",
+    description: p.features.join(", "),
+  })),
+};
 
 export default function PricingPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd, offersLd]) }} />
+      <PageHero
+        eyebrow="Pricing"
+        title={
+          <>
+            Simple monthly plans for local <Accent>visibility.</Accent>
+          </>
+        }
+        lead="Our Google Business Profile plans cover everything from listing management and local citations to marketing assets and social media. Every other service is scoped to your goals."
       />
 
-      <main id="main">
-        <section className="page-head">
-          <div className="container">
-            <ol className="breadcrumb" aria-label="Breadcrumb">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>Pricing</li>
-            </ol>
-            <div className="split split--wide-left">
-              <h1 className="display reveal">Transparent pricing, tailored to your scope.</h1>
-              <p className="lead reveal d1">
-                Move the sliders to shape your project and watch your estimate update instantly.
-                It&rsquo;s an indicative range — your free consultation confirms the exact figure.
-              </p>
-            </div>
-          </div>
-        </section>
+      <PricingPlans id="plans" />
 
-        {/* CALCULATOR */}
-        <section className="section" style={{ paddingTop: "var(--space-4)" }}>
-          <div className="container">
-            <PricingCalculator />
-          </div>
-        </section>
-
-        {/* TIERS */}
-        <section className="section">
-          <div className="container">
-            <div className="split split--wide-left" style={{ marginBottom: "var(--space-5)" }}>
-              <div className="reveal">
-                <p className="eyebrow">Ways to work with us</p>
-                <h2 className="h2">Engagement models built around your stage.</h2>
-              </div>
-              <p className="lead reveal d1">
-                Prefer a fixed shape? These starting points cover most projects — every one begins
-                with a free consultation.
+      <section aria-labelledby="faq-title" className="py-24 md:py-36">
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="flex flex-col gap-6 lg:col-span-4">
+            <Reveal>
+              <Eyebrow>Questions</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 id="faq-title" className="text-headline font-medium">
+                Good to <Accent>know.</Accent>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="max-w-[36ch] text-base leading-relaxed text-fg-muted">
+                Can&apos;t find your answer? Call{" "}
+                <a href={site.phoneHref} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-accent">
+                  {site.phone}
+                </a>{" "}
+                or send us a message.
               </p>
-            </div>
-            <div className="tiers">
-              <div className="tier reveal">
-                <div className="tier__name">Launch</div>
-                <div className="tier__price">
-                  Rs 40k<span> / from</span>
-                </div>
-                <p className="text-muted" style={{ fontSize: "14px" }}>
-                  For entrepreneurs validating an idea.
-                </p>
-                <ul>
-                  <li>{CHECK}MVP or marketing site</li>
-                  <li>{CHECK}Core UI/UX design</li>
-                  <li>{CHECK}~6-week delivery</li>
-                </ul>
-                <Link className="btn btn--ghost" href="/contact">
-                  Get started
-                </Link>
-              </div>
-              <div className="tier tier--featured reveal d1">
-                <span className="badge">Most popular</span>
-                <div className="tier__name">Scale</div>
-                <div className="tier__price">
-                  Rs 150k<span> / from</span>
-                </div>
-                <p className="text-muted" style={{ fontSize: "14px" }}>
-                  For startups &amp; SMEs building a real product.
-                </p>
-                <ul>
-                  <li>{CHECK}Full-stack web or mobile app</li>
-                  <li>{CHECK}API integrations &amp; cloud</li>
-                  <li>{CHECK}QA, DevOps &amp; support</li>
-                </ul>
-                <Link className="btn btn--primary" href="/contact">
-                  Get started
-                </Link>
-              </div>
-              <div className="tier reveal d2">
-                <div className="tier__name">Enterprise</div>
-                <div className="tier__price">Custom</div>
-                <p className="text-muted" style={{ fontSize: "14px" }}>
-                  For enterprises modernising at scale.
-                </p>
-                <ul>
-                  <li>{CHECK}SaaS or multi-system builds</li>
-                  <li>{CHECK}Digital transformation</li>
-                  <li>{CHECK}Dedicated senior team</li>
-                </ul>
-                <Link className="btn btn--ghost" href="/contact">
-                  Talk to us
-                </Link>
-              </div>
-            </div>
+            </Reveal>
           </div>
-        </section>
+          <Reveal delay={0.1} className="lg:col-span-7 lg:col-start-6">
+            <Faq items={pricingFaq} />
+          </Reveal>
+        </div>
+      </section>
 
-        <section className="section" style={{ paddingTop: 0 }}>
-          <div className="container">
-            <div className="cta-band reveal">
-              <p className="eyebrow">No surprises</p>
-              <h2 className="h2">Turn your estimate into a fixed quote.</h2>
-              <p className="lead">
-                Book a free consultation and we&rsquo;ll confirm scope, timeline and a fixed price
-                — no obligation.
-              </p>
-              <div className="btn-row">
-                <Link className="btn btn--primary" href="/contact">
-                  Book a Free Consultation
-                </Link>
-                <Link className="btn btn--ghost" href="/services">
-                  Browse services
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+      <FinalCta
+        eyebrow="Still deciding?"
+        title={
+          <>
+            Not sure which plan fits? Let&apos;s <Accent>talk.</Accent>
+          </>
+        }
+      />
     </>
   );
 }
