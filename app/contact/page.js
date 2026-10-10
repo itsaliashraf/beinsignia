@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { EnvelopeSimple, MapPin, Phone, User } from "@phosphor-icons/react/dist/ssr";
 import ContactForm, { ContactFormSkeleton } from "@/components/contact/ContactForm";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Accent, Eyebrow } from "@/components/ui/SectionHeader";
@@ -13,6 +13,7 @@ export const metadata = {
 };
 
 const CHANNELS = [
+  { icon: User, label: site.ownerTitle, value: site.owner },
   { icon: EnvelopeSimple, label: "Email", value: site.email, href: `mailto:${site.email}` },
   { icon: Phone, label: "Phone", value: site.phone, href: site.phoneHref },
   { icon: MapPin, label: "Based in", value: `${site.city}, ${site.country}` },

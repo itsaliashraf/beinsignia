@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, EnvelopeSimple, MapPin, Phone, User } from "@phosphor-icons/react/dist/ssr";
 import Logo from "@/components/ui/Logo";
 import { services, site } from "@/lib/site";
 
@@ -60,6 +60,10 @@ export default function Footer() {
         <div className="md:col-span-3">
           <h2 className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-subtle">Contact</h2>
           <ul className="flex flex-col gap-3 text-[15px] text-fg-muted">
+            <li className="inline-flex items-center gap-2">
+              <User size={16} className="shrink-0" aria-hidden="true" />
+              {site.owner}, {site.ownerTitle}
+            </li>
             <li>
               <a href={`mailto:${site.email}`} className="inline-flex items-start gap-2 [overflow-wrap:anywhere] transition-colors hover:text-fg">
                 <EnvelopeSimple size={16} className="mt-1 shrink-0" aria-hidden="true" />

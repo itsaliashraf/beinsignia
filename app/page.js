@@ -20,6 +20,7 @@ const jsonLd = {
   url: site.url,
   email: site.email,
   telephone: site.phone,
+  founder: { "@type": "Person", name: site.owner, jobTitle: site.ownerTitle },
   address: {
     "@type": "PostalAddress",
     addressLocality: site.city,
